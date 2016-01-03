@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emotes>
+    <emote>
+        <text>¯\_(ツ)_/¯</text>
+        <tags>
+            <tag>shrug</tag>
+            <tag>umadbro?</tag>
+        </tags>
+    </emote>
+    <emote>
+        <text>(╯°□°）╯︵ ┻━┻</text>
+        <tags>
+            <tag>table</tag>
+            <tag>flip</tag>
+            <tag>rage</tag>
+            <tag>tableflip</tag>
+        </tags>
+    </emote>
+</emotes>
