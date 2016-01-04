@@ -2,6 +2,7 @@
 import Tkinter as tk
 from Emote import Emote
 import os
+import platform
 
 class Application(tk.Frame):
     def __init__(self, master = None, searchtable = []):
@@ -14,8 +15,15 @@ class Application(tk.Frame):
 
     def copytoclipboard(self, button):
         string = button.cget("text")
-        os.system("echo -n '%s' | xclip -sel clip" % string.replace("\'", "\'\\\'\'").encode('utf-8'))
-
+        if platform.system() == 'Linux':
+            os.system("echo -n '%s' | xclip -sel clip" % string.replace("\'", "\'\\\'\'").encode('utf-8'))
+        elif platform.system() == 'Windows':
+            self.clipboard_clear()
+            self.clipboard_append(string)
+            self.update()
+        elif platform.system() == 'Darwin': #Mac
+            process = subprocess.Popen('pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+            process.communicate(output.encode('utf-8'))
 
     def keyrelease(self, key):
         #TODO: create emote searching buttons
