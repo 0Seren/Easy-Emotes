@@ -14,7 +14,7 @@ class Application(tk.Frame):
 
     def copytoclipboard(self, button):
         string = button.cget("text")
-        os.system("echo '%s' | xclip -sel clip" % string.encode('utf-8'))
+        os.system("echo -n '%s' | xclip -sel clip" % string.replace("\'", "\'\\\'\'").encode('utf-8'))
 
 
     def keyrelease(self, key):
