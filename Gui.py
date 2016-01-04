@@ -48,15 +48,15 @@ class Application(tk.Frame):
         top.columnconfigure(0, weight = 1)
         self.rowconfigure(0, weight = 1)
         self.columnconfigure(0, weight = 1)
-        #create entry field
+        #configure entry field
         self.entry.grid(row = 0, column = 0, sticky = tk.N + tk.E + tk.W, columnspan=2)
         self.entry.bind("<KeyRelease>", self.keyrelease)
         self.entry.focus_set()
         #TODO: create 'new emote' button
-        #create emote buttons
+        #configure emote buttons
         for i in range(3):
             top.rowconfigure(i + 1, weight = 2)
             for n in range(2):
-                top.columnconfigure(n, weight = 2)
+                top.columnconfigure(n, weight = 1, minsize = "3.25cm")
                 self.buttons[i][n].grid(row = i + 1, column = n, sticky = tk.N + tk.E + tk.W + tk.S)
                 self.buttons[i][n].config(text = "", command = lambda b=self.buttons[i][n]: self.copytoclipboard(b))
