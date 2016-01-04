@@ -15,15 +15,20 @@ class Application(tk.Frame):
 
     def copytoclipboard(self, button):
         string = button.cget("text")
+        self.clipboard_clear()
+        self.clipboard_append(string)
+        self.update()
         if platform.system() == 'Linux':
-            os.system("echo -n '%s' | xclip -sel clip" % string.replace("\'", "\'\\\'\'").encode('utf-8'))
-        elif platform.system() == 'Windows':
-            self.clipboard_clear()
-            self.clipboard_append(string)
-            self.update()
+            try:
+                os.system("echo -n '%s' | xclip -sel clip" % string.replace("\'", "\'\\\'\'").encode('utf-8'))
+            except:
+                print "Error with copying to clipboard. Will not be able to paste after this program closes."
         elif platform.system() == 'Darwin': #Mac
-            process = subprocess.Popen('pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
-            process.communicate(output.encode('utf-8'))
+            try:
+                process = subprocess.Popen('pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+                process.communicate(output.encode('utf-8'))
+            except:
+                print "Error with copying to clipboard. Will not be able to paste after this program closes."
 
     def keyrelease(self, key):
         #TODO: create emote searching buttons
