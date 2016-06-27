@@ -5,6 +5,7 @@ except ImportError:
     import xml.etree.ElementTree as ET
 from Emote import Emote
 from Gui import Application
+import math
 
 def importxmlemotes(filename):
     retemotes = []
@@ -28,7 +29,6 @@ def main():
         for tag in emote.tags:
             tagstoemotes.append((tag, emote))
     app = Application(searchtable = tagstoemotes)
-    app.master.title('Easy Emotes')
     app.mainloop()
 
 
