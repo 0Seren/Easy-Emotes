@@ -105,7 +105,7 @@ class ButtonTable(tk.Frame):
                     for column in range(self.num_columns):
                         if len(self._button_texts) > current_text_index:
                             button_text = self._button_texts[current_text_index]
-                            button = tk.Button(self, text = button_text, width = button_width, command = lambda: self.copytoclipboard(button_text))
+                            button = tk.Button(self, text = button_text, width = button_width, command = lambda b = button_text: self.copytoclipboard(b))
                             button.grid(row=row, column=column, sticky="nsew")
                             current_row.append(button)
                             current_text_index = current_text_index + 1
